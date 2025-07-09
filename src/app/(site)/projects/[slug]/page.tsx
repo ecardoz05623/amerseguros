@@ -13,12 +13,12 @@ export async function generateMetadata({ params }: Props) {
 
     const project = getProjectsBySlug(slug, ["title", "ScopeOfWork", "industry", "raised", "website", "description", "coverImage", "gallery", "content"]);
 
-    const siteName = process.env.SITE_NAME || "Your Site Name";
-    const authorName = process.env.AUTHOR_NAME || "Your Author Name";
+    const siteName = process.env.SITE_NAME || "Amerseguros";
+    const authorName = process.env.AUTHOR_NAME || "Amerseguros";
 
     if (project) {
         const metadata = {
-            title: '${project.title || "Single Post Page"} | ${siteName}',
+            title: `${project.title || "Single Post Page"} | ${siteName}`,
             robots: {
                 index: true,
                 follow: true,
