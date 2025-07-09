@@ -29,7 +29,7 @@ export default function ScrollToTop() {
     <div className="fixed bottom-8 right-8 z-[999]">
       <div className="flex items-center gap-2.5">
         <Link
-          href="https://wa.me/573104771068?text=Hola%2C%20vi%20el%20enlace%20en%20su%20sitio%20web%20amerseguros.com%20y%20estoy%20interesado%20en%20cotizar%20un%20seguro.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%2C%20por%20favor%3F
+          href="https://wa.me/573182723559?text=Hola%2C%20vi%20el%20enlace%20en%20su%20sitio%20web%20amerseguros.com%20y%20estoy%20interesado%20en%20cotizar%20un%20seguro.%20%C2%BFPodr%C3%ADan%20brindarme%20m%C3%A1s%20informaci%C3%B3n%2C%20por%20favor%3F
 " // <-- Reemplaza con tu número de WhatsApp
           target="_blank"
           className="hidden lg:block"

@@ -22,7 +22,7 @@ const Contact = ({ contactdataNumber }: ContactProps) => {
     e.preventDefault();
     setLoader(true);
 
-    fetch("https://formsubmit.co/ajax/amer_seguros@outlook.com", {
+    fetch("https://formsubmit.co/ajax/ejecutivoamerseguros@gmail.com", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(formData)
