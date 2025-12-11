@@ -42,28 +42,33 @@ const Footer = () => {
           {/* Enlaces y redes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-white text-sm w-full">
             {/* Navegación */}
-            <ul className="flex flex-col gap-2">
-              <h4 className="font-semibold mb-2">Navegación</h4>
-              {footerData?.links?.map((link: any, index: number) => (
-                <li key={index}>
-                  <a href={link.href} className="hover:text-primary">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* Navegación */}
+            <div className="flex flex-col gap-2">
+              <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">Navegación</h2>
+              <ul className="flex flex-col gap-2">
+                {footerData?.links?.map((link: any, index: number) => (
+                  <li key={index}>
+                    <a href={link.href} className="hover:text-primary">
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* Redes sociales */}
-            <ul className="flex flex-col gap-2">
-              <h4 className="font-semibold mb-2">Síguenos</h4>
-              {footerData?.socialLinks?.map((social: any, index: number) => (
-                <li key={index}>
-                  <a href={social.href} className="hover:text-primary" target="_blank">
-                    {social.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col gap-2">
+              <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">Síguenos</h2>
+              <ul className="flex flex-col gap-2">
+                {footerData?.socialLinks?.map((social: any, index: number) => (
+                  <li key={index}>
+                    <a href={social.href} className="hover:text-primary" target="_blank">
+                      {social.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* Derechos */}
             <div className="md:col-span-1 flex items-start md:items-end">

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import Logo from "../logo";
-import ThemeToggler from "./ThemeToggle";
-
 const Header = () => {
   const [sticky, setSticky] = useState(false);
 
@@ -29,7 +27,6 @@ const Header = () => {
             <Logo sticky={sticky} />
           </div>
           <div className="flex items-center">
-            <ThemeToggler />
           </div>
         </nav>
       </div>
