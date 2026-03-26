@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
-import ScrollToTop from "./components/scroll-to-top";
+import WhatsAppButton from "./components/layout/whatsapp-button";
+
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -42,7 +43,7 @@ export default function RootLayout({
             {!hideLayout && <Header />}
             {children}
             {!hideLayout && <Footer />}
-            <ScrollToTop />
+            <WhatsAppButton />
           </ThemeProvider>
         </SessionProvider>
       </body>

@@ -2,15 +2,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface LogoProps {
-  sticky?: boolean;
-}
-
-const Logo = ({ sticky }: LogoProps) => {
+const Logo = () => {
   return (
     <Link href="/">
       <Image
-        src={sticky ? "/images/logo/WhiteLogo.png" : "/images/logo/WhiteLogo.png"}
+        src={"/images/logo/WhiteLogo.png"}
         alt="logo"
         width={190}
         height={34}
@@ -20,7 +16,7 @@ const Logo = ({ sticky }: LogoProps) => {
         className="hidden xsm:block"
       />
       <Image
-        src={sticky ? "/images/logo/WhiteLogo.png" : "/images/logo/WhiteLogo.png"}
+        src={"/images/logo/WhiteLogo.png"}
         alt="logo"
         width={150}
         height={150}

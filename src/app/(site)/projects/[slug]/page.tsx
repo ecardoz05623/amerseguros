@@ -1,4 +1,6 @@
-import Herobanner from "@/app/components/shared/hero-banner";
+
+import FeatureSection from "@/app/components/shared/feature-section";
+import ProjectHero from "@/app/components/shared/project-hero";
 import { getProjectsBySlug } from "@/lib/markdown";
 import markdownToHtml from "@/lib/markdownToHtml";
 import Image from "next/image";
@@ -58,7 +60,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function Post({ params }: Props) {
     const { slug } = await params;
     const project = getProjectsBySlug(slug, [
-        "title", "ScopeOfWork", "industry", "raised", "website", "description", "coverImage", "gallery", "content"
+        "title", "ScopeOfWork", "industry", "raised", "website", "description", "coverImage", "gallery", "content", "features"
     ]);
 
     const content = await markdownToHtml(project.content || "");
@@ -66,55 +68,59 @@ export default async function Post({ params }: Props) {
 
     return (
         <>
-            <section>
-                <div>
-                    <Herobanner
-                        bannerimage={project.coverImage}
-                        heading={project.title}
-                        desc={project.description} />
-                </div>
-                <div className="dark:bg-darkblack">
-                    <div className="container">
-                        <div className="flex flex-col gap-12 md:gap-24 py-20 xl:py-40">
-                            <div className="flex flex-col gap-10">
-                                <div>
-                                    <Link href="/" className="group flex gap-3 items-center w-fit bg-primary hover:bg-secondary dark:border dark:border-primary dark:hover:border dark:hover:border-white/30 rounded-full transition-all duration-500 ease-in-out">
-                                        <Image src={"/images/Icon/back-btn.svg"} alt="Image" width={42} height={42} className="group-hover:translate-x-16.5 transform transition-transform duration-500 ease-in-out" />
-                                        <span className="pr-4 text-lg font-bold text-secondary group-hover:text-white group-hover:-translate-x-10 transform transition-transform duration-500 ease-in-out">Back</span>
-                                    </Link>
-                                </div>
-                                <div className="flex flex-col md:flex-row gap-5 lg:gap-10">
-                                    
-                                </div>
-                            </div>
-                            <div>
-                                <div className="flex flex-col xl:flex xl:flex-row items-start gap-8">
-                                    
-                                    <div className="flex flex-col gap-11">
-                                        <div className="project-descp flex flex-col gap-5">
-                                            <div dangerouslySetInnerHTML={{ __html: content }}></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="grid gap-8">
-                                {project.gallery.length > 0 && (
-                                    <div className="w-full max-w-5xl mx-auto aspect-[16/9] rounded-xl overflow-hidden shadow-md">
-                                            <Image
-                                                src={project.gallery[0]}
-                                                alt="Imagen destacada"
-                                                width={1200}
-                                                height={675}
-                                                className="w-full h-full object-cover"
-                                                />
-                                                </div>
-                                            )}
+            <ProjectHero
+                title={project.title}
+                subtitle={project.description}
+                image={project.coverImage}
+            />
+
+            <div className="dark:bg-darkblack">
+                <div className="container">
+                    <div className="flex flex-col gap-8 md:gap-16 py-10 xl:py-20">
+                        <div className="flex flex-col gap-10">
+
+                            <div className="flex flex-col md:flex-row gap-5 lg:gap-10">
+                                {/* Back button area already removed */}
                             </div>
 
+                            {/* Old Title and Description removed in favor of Hero */}
+
+                            {/* Feature Sections */}
                         </div>
                     </div>
+
+                    {/* Feature Sections */}
+
+                    <div className="flex flex-col gap-0">
+                        {project.features?.map((feature: any, index: number) => (
+                            <FeatureSection
+                                key={index}
+                                title={feature.title}
+                                description={feature.description}
+                                items={feature.items}
+                                image={feature.image || project.coverImage}
+                                reversed={index % 2 !== 0}
+                            />
+                        ))}
+                    </div>
+
+
+                    {project.gallery?.length > 0 && (
+                        <div className="w-full max-w-5xl mx-auto aspect-[16/9] rounded-xl overflow-hidden shadow-md">
+                            <Image
+                                src={project.gallery[0]}
+                                alt="Imagen destacada"
+                                width={1200}
+                                height={675}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    )}
                 </div>
-            </section>
+
+            </div>
+
+
         </>
     );
 }
