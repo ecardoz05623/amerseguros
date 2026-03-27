@@ -65,6 +65,11 @@ export default function PolizasCumplimientoPage() {
         heroText="Gestionamos pólizas de seriedad de oferta, cumplimiento, anticipo, calidad y estabilidad de obra con las principales aseguradoras del país. Expedición en 24 a 72 horas."
         ctaPrimaryText="Solicitar póliza"
         ctaPhoneText="Llamar ahora"
+        floatingCards={[
+          { icon: "bi-hand-thumbs-up", iconBg: "rgba(245,158,11,0.2)", iconColor: "#F59E0B", title: "Seriedad de Oferta", text: "Garantiza tu participación en procesos de licitación." },
+          { icon: "bi-file-check", iconBg: "rgba(46,107,181,0.3)", iconColor: "#4A90D9", title: "Cumplimiento", text: "Respalda las obligaciones pactadas en tu contrato." },
+          { icon: "bi-cash-coin", iconBg: "rgba(34,197,94,0.2)", iconColor: "#22C55E", title: "Anticipo y Calidad", text: "Garantiza el buen manejo del anticipo y estabilidad de obra." },
+        ]}
         coverageSectionLabel="Amparos disponibles"
         coverageSectionTitle="Garantías que gestionamos para tus contratos"
         coverages={[

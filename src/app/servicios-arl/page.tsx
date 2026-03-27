@@ -65,6 +65,11 @@ export default function ServiciosArlPage() {
         heroText="Te ayudamos con la afiliación, gestión y asesoría en riesgos laborales. Cumple la normativa colombiana y protege a tus colaboradores con el acompañamiento de un intermediario autorizado."
         ctaPrimaryText="Asesoría ARL gratis"
         ctaPhoneText="Llamar ahora"
+        floatingCards={[
+          { icon: "bi-person-plus", iconBg: "rgba(46,107,181,0.3)", iconColor: "#4A90D9", title: "Afiliación ARL", text: "Gestión completa de afiliación para tu empresa y empleados." },
+          { icon: "bi-clipboard-check", iconBg: "rgba(34,197,94,0.2)", iconColor: "#22C55E", title: "Clasificación de Riesgo", text: "Asesoría para determinar el nivel correcto de tu actividad." },
+          { icon: "bi-shield-check", iconBg: "rgba(245,158,11,0.2)", iconColor: "#F59E0B", title: "Gestión de Accidentes", text: "Acompañamiento en reportes y reclamaciones ante la ARL." },
+        ]}
         coverageSectionLabel="Nuestros servicios"
         coverageSectionTitle="¿Qué hacemos en gestión de ARL?"
         coverages={[

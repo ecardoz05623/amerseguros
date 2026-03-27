@@ -18,6 +18,14 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface FloatingCard {
+  icon: string;
+  iconBg: string;
+  iconColor: string;
+  title: string;
+  text: string;
+}
+
 export interface HeroStat {
   icon: string;
   label: string;
@@ -44,6 +52,7 @@ export interface ServicePageProps {
   ctaPrimaryText: string;
   ctaPhoneText?: string;
   heroStats?: HeroStat[];
+  floatingCards?: FloatingCard[];
   /* Coverages */
   coverageSectionLabel: string;
   coverageSectionTitle: string;
@@ -77,7 +86,7 @@ const NAV_LINKS = [
 export default function ServicePage(props: ServicePageProps) {
   const {
     active, whatsappMsg, breadcrumb, badgeIcon, badgeBg, badgeColor, badgeText,
-    heroH1, heroText, ctaPrimaryText, ctaPhoneText, heroStats,
+    heroH1, heroText, ctaPrimaryText, ctaPhoneText, heroStats, floatingCards,
     coverageSectionLabel, coverageSectionTitle, coverages,
     contentHtml, faqSectionTitle, faqs,
     ctaBannerH2, ctaBannerP, ctaBannerBtn, trustBadges,
@@ -177,6 +186,7 @@ export default function ServicePage(props: ServicePageProps) {
               </div>
             </div>
 
+            {/* HERO STATS (Grid 2x2 for Vehiculos) */}
             {heroStats && (
               <div className="sp-hero-right">
                 <div className="sp-mini-cards">
@@ -188,6 +198,23 @@ export default function ServicePage(props: ServicePageProps) {
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* FLOATING CARDS (Cascade for Vida, Cumplimiento, ARL) */}
+            {floatingCards && floatingCards.length === 3 && (
+              <div className="sp-hero-right sp-hero-floating">
+                {floatingCards.map((c, i) => (
+                  <div key={c.title} className={`sp-float-card sp-float-card-${i + 1}`}>
+                    <div className="sp-fc-icon" style={{ background: c.iconBg, color: c.iconColor }}>
+                      <i className={`bi ${c.icon}`} />
+                    </div>
+                    <div className="sp-fc-content">
+                      <div className="sp-fc-title">{c.title}</div>
+                      <div className="sp-fc-text">{c.text}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -507,6 +534,37 @@ export default function ServicePage(props: ServicePageProps) {
         .sp-mc-icon { font-size: 1.8rem; margin-bottom: 8px; color: var(--blue-light); }
         .sp-mc-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
         .sp-mc-value { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-top: 2px; }
+
+        /* Floating cascade cards */
+        .sp-hero-floating { position: relative; min-height: 400px; display: none; }
+        @media (min-width: 1024px) { .sp-hero-floating { display: block; } }
+
+        .sp-float-card {
+          position: absolute;
+          background: rgba(255,255,255,0.06);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 20px;
+          padding: 20px;
+          color: var(--white);
+          width: 320px;
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          transition: transform 0.3s, box-shadow 0.3s;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .sp-float-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+        .sp-fc-icon {
+          width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+          justify-content: center; font-size: 1.4rem; flex-shrink: 0;
+        }
+        .sp-fc-title { font-weight: 700; font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 4px; }
+        .sp-fc-text { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; font-family: var(--font-body); }
+
+        .sp-float-card-1 { top: 0; right: 20px; z-index: 3; }
+        .sp-float-card-2 { top: 120px; right: 60px; z-index: 2; }
+        .sp-float-card-3 { top: 240px; right: -20px; z-index: 1; }
 
         /* ── SECTIONS ── */
         .sp-section { padding: var(--space-section, 80px) 0; }

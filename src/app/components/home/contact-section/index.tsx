@@ -12,8 +12,8 @@ const contactInfo = [
   {
     icon: "bi-telephone",
     label: "Teléfono",
-    value: "+57 322 332 2322",
-    href: "tel:+573223322322",
+    value: "+57 301 663 8053",
+    href: "tel:+573016638053",
   },
   {
     icon: "bi-envelope",
@@ -24,8 +24,8 @@ const contactInfo = [
   {
     icon: "bi-geo-alt",
     label: "Oficina",
-    value: "Cl. 10 #37-82, Sevilla\\nDuitama, Boyacá",
-    href: null,
+    value: "Cl. 10 #37-82, Sevilla\nDuitama, Boyacá",
+    href: "https://share.google/oU85wXMsfXYN57ybE",
   },
 ];
 
@@ -55,9 +55,8 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const msg = `Hola, quiero cotizar un seguro.\n\nNombre: ${form.nombre}\nTeléfono: ${form.telefono}\nTipo de seguro: ${
-      form.seguro || "No especificado"
-    }\nMensaje: ${form.mensaje || "—"}`;
+    const msg = `Hola, quiero cotizar un seguro.\n\nNombre: ${form.nombre}\nTeléfono: ${form.telefono}\nTipo de seguro: ${form.seguro || "No especificado"
+      }\nMensaje: ${form.mensaje || "—"}`;
     window.open(
       `https://wa.me/573182723559?text=${encodeURIComponent(msg)}`,
       "_blank"

@@ -65,6 +65,11 @@ export default function SegurosVidaPage() {
         heroText="Protege el futuro de tu familia con un seguro de vida que realmente se ajuste a tus necesidades. Comparamos planes de las mejores aseguradoras del país."
         ctaPrimaryText="Cotizar seguro de vida"
         ctaPhoneText="Llamar ahora"
+        floatingCards={[
+          { icon: "bi-heart-pulse", iconBg: "rgba(239,68,68,0.2)", iconColor: "#F87171", title: "Seguro de Vida", text: "Protección económica para tu familia ante cualquier eventualidad." },
+          { icon: "bi-hospital", iconBg: "rgba(34,197,94,0.2)", iconColor: "#22C55E", title: "Enfermedades Graves", text: "Cobertura anticipada para cáncer, infarto y otras enfermedades." },
+          { icon: "bi-bandaid", iconBg: "rgba(46,107,181,0.3)", iconColor: "#4A90D9", title: "Accidentes Personales", text: "Indemnización por lesiones, incapacidad o fallecimiento accidental." },
+        ]}
         coverageSectionLabel="Tipos de protección"
         coverageSectionTitle="¿Qué cubren los seguros de vida y personas?"
         coverages={[
