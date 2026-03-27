@@ -1,6 +1,5 @@
 "use client";
-
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 const faqs = [
   {
@@ -37,29 +36,10 @@ const faqs = [
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (idx: number) => {
     setActiveIndex((prev) => (prev === idx ? null : idx));
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    itemRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section id="faq" className="faq-section">
@@ -77,10 +57,7 @@ const FaqSection = () => {
             return (
               <div
                 key={faq.question}
-                ref={(el) => {
-                  itemRefs.current[idx] = el;
-                }}
-                className={`fade-up faq-item ${isActive ? "active" : ""}`}
+                className={`faq-item ${isActive ? "active" : ""}`}
               >
                 {/* Question row */}
                 <button

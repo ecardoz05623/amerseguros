@@ -44,7 +44,7 @@ export default function RootLayout({
     });
   }, [pathname]);
 
-  const excludedRoutes = ["/", "/signin", "/signup", "/forgot-password", "/documentation"];
+  const excludedRoutes = ["/", "/signin", "/signup", "/forgot-password", "/documentation", "/seguros-vehiculos", "/seguros-vida", "/polizas-cumplimiento", "/servicios-arl"];
   const hideLayout = excludedRoutes.includes(pathname) || is404;
 
   return (
