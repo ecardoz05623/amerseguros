@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ServicePage from "../components/service-page";
+import LogosBar from "../components/home/logos-bar";
+import FooterAmer from "../components/layout/footer-amer";
 
 export const metadata: Metadata = {
   title: "Pólizas de Cumplimiento en Boyacá | Contratos Públicos y Privados — AMER Seguros",
@@ -51,6 +53,8 @@ export default function PolizasCumplimientoPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <ServicePage
         active="cumplimiento"
+        logosBar={<LogosBar />}
+        footer={<FooterAmer />}
         whatsappMsg="Hola, necesito una póliza de cumplimiento"
         breadcrumb="Pólizas de Cumplimiento"
         badgeIcon="bi-file-earmark-check-fill"

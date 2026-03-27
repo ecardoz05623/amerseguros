@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import FooterAmer from "../layout/footer-amer";
-import LogosBar from "../home/logos-bar";
 
 /* ── Types ── */
 export interface CoverageCard {
@@ -60,6 +58,9 @@ export interface ServicePageProps {
   ctaBannerP: string;
   ctaBannerBtn: string;
   trustBadges: TrustBadge[];
+  /** Server component slots — passed from page.tsx to avoid hydration mismatch */
+  logosBar: React.ReactNode;
+  footer: React.ReactNode;
 }
 
 const NAV_LINKS = [
@@ -80,6 +81,7 @@ export default function ServicePage(props: ServicePageProps) {
     coverageSectionLabel, coverageSectionTitle, coverages,
     contentHtml, faqSectionTitle, faqs,
     ctaBannerH2, ctaBannerP, ctaBannerBtn, trustBadges,
+    logosBar, footer,
   } = props;
 
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -192,6 +194,9 @@ export default function ServicePage(props: ServicePageProps) {
         </div>
       </section>
 
+      {/* ── LOGOS BAR ── */}
+      {logosBar}
+
       {/* ── COVERAGES ── */}
       <section className="sp-section sp-bg-gray">
         <div className="sp-container">
@@ -227,9 +232,6 @@ export default function ServicePage(props: ServicePageProps) {
           </div>
         </div>
       </section>
-
-      {/* ── LOGOS BAR (componente existente) ── */}
-      <LogosBar />
 
       {/* ── FAQ ── */}
       <section className="sp-section">
@@ -278,8 +280,8 @@ export default function ServicePage(props: ServicePageProps) {
         </div>
       </section>
 
-      {/* ── FOOTER (componente existente) ── */}
-      <FooterAmer />
+      {/* ── FOOTER ── */}
+      {footer}
 
       {/* ── WHATSAPP FLOAT ── */}
       <a href={waHref} className="sp-wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">

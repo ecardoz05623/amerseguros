@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ServicePage from "../components/service-page";
+import LogosBar from "../components/home/logos-bar";
+import FooterAmer from "../components/layout/footer-amer";
 
 export const metadata: Metadata = {
   title: "Seguros de Vida en Duitama, Boyacá | Protege a Tu Familia — AMER Seguros",
@@ -51,6 +53,8 @@ export default function SegurosVidaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <ServicePage
         active="vida"
+        logosBar={<LogosBar />}
+        footer={<FooterAmer />}
         whatsappMsg="Hola, quiero cotizar un seguro de vida"
         breadcrumb="Seguros de Vida"
         badgeIcon="bi-heart-pulse-fill"

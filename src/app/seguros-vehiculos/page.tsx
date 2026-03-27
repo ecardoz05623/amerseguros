@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ServicePage from "../components/service-page";
+import LogosBar from "../components/home/logos-bar";
+import FooterAmer from "../components/layout/footer-amer";
 
 export const metadata: Metadata = {
   title: "Seguro Vehicular en Duitama, Boyacá | Todo Riesgo y SOAT — AMER Seguros",
@@ -86,6 +88,8 @@ export default function SegurosVehiculosPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <ServicePage
         active="vehiculos"
+        logosBar={<LogosBar />}
+        footer={<FooterAmer />}
         whatsappMsg="Hola, quiero cotizar un seguro vehicular"
         breadcrumb="Seguros Vehiculares"
         badgeIcon="bi-car-front-fill"
