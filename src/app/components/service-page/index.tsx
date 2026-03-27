@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import FooterAmer from "../layout/footer-amer";
+import LogosBar from "../home/logos-bar";
 
 /* ── Types ── */
 export interface CoverageCard {
@@ -68,7 +70,8 @@ const NAV_LINKS = [
   { href: "/servicios-arl", label: "ARL", key: "arl" },
 ];
 
-const BRANDS = ["SURA", "Bolívar", "Allianz", "Mapfre", "AXA Colpatria", "Liberty", "Positiva", "S. del Estado"];
+
+
 
 export default function ServicePage(props: ServicePageProps) {
   const {
@@ -225,16 +228,8 @@ export default function ServicePage(props: ServicePageProps) {
         </div>
       </section>
 
-      {/* ── BRANDS ── */}
-      <section className="sp-section sp-bg-gray">
-        <div className="sp-container sp-text-center">
-          <div className="sp-section-label">Aseguradoras con las que cotizamos</div>
-          <h2 className="sp-section-title" style={{ marginBottom: "32px" }}>Comparamos las mejores opciones</h2>
-          <div className="sp-brands">
-            {BRANDS.map((b) => <span key={b} className="sp-brand-item">{b}</span>)}
-          </div>
-        </div>
-      </section>
+      {/* ── LOGOS BAR (componente existente) ── */}
+      <LogosBar />
 
       {/* ── FAQ ── */}
       <section className="sp-section">
@@ -263,46 +258,28 @@ export default function ServicePage(props: ServicePageProps) {
       <section className="sp-section sp-bg-gray">
         <div className="sp-container">
           <div className="sp-cta-banner">
-            <h2>{ctaBannerH2}</h2>
-            <p>{ctaBannerP}</p>
-            <a href={waHref} className="sp-btn-primary" target="_blank" rel="noopener noreferrer">
-              <i className="bi bi-whatsapp" /> {ctaBannerBtn}
-            </a>
-            <div className="sp-trust-row">
-              {trustBadges.map((t) => (
-                <div key={t.label} className="sp-trust-item">
-                  <i className={`bi ${t.icon}`} /> {t.label}
-                </div>
-              ))}
+            <div className="sp-cta-banner-content">
+              <h2>{ctaBannerH2}</h2>
+              <p>{ctaBannerP}</p>
+            </div>
+            <div className="sp-cta-banner-actions">
+              <a href={waHref} className="sp-btn-primary" target="_blank" rel="noopener noreferrer">
+                <i className="bi bi-whatsapp" /> {ctaBannerBtn}
+              </a>
+              <div className="sp-trust-row">
+                {trustBadges.map((t) => (
+                  <div key={t.label} className="sp-trust-item">
+                    <i className={`bi ${t.icon}`} /> {t.label}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="sp-footer">
-        <div className="sp-container">
-          <div className="sp-footer-grid">
-            <div>
-              <Image src="/images/logo/WhiteLogo.png" alt="AMER Seguros" width={120} height={32} className="sp-footer-logo" />
-              <p className="sp-footer-desc">Intermediario de seguros multimarca en Duitama, Boyacá.</p>
-            </div>
-            <div>
-              <p><i className="bi bi-geo-alt sp-footer-icon" /> Cl. 10 #37-82, Sevilla, Duitama</p>
-              <p><i className="bi bi-telephone sp-footer-icon" /> +57 318 272 3559</p>
-              <p><i className="bi bi-envelope sp-footer-icon" /> contacto@amerseguros.com</p>
-            </div>
-            <div>
-              <p className="sp-footer-links-row">
-                <Link href="/">Inicio</Link> · <Link href="/seguros-vehiculos">Vehículos</Link> · <Link href="/seguros-vida">Vida</Link> · <Link href="/polizas-cumplimiento">Cumplimiento</Link> · <Link href="/servicios-arl">ARL</Link>
-              </p>
-            </div>
-          </div>
-          <div className="sp-footer-bottom">
-            <p>© 2025 AMER Seguros — Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      {/* ── FOOTER (componente existente) ── */}
+      <FooterAmer />
 
       {/* ── WHATSAPP FLOAT ── */}
       <a href={waHref} className="sp-wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
@@ -641,9 +618,11 @@ export default function ServicePage(props: ServicePageProps) {
         .sp-cta-banner {
           background: linear-gradient(135deg, var(--navy) 0%, #0F2440 100%);
           border-radius: 20px;
-          padding: 52px 44px;
+          padding: 48px 40px;
           position: relative;
           overflow: hidden;
+          max-width: 900px;
+          margin: 0 auto;
         }
         .sp-cta-banner::before {
           content: '';
@@ -654,28 +633,34 @@ export default function ServicePage(props: ServicePageProps) {
           border-radius: 50%;
           pointer-events: none;
         }
-        .sp-cta-banner h2 { font-family: var(--font-display); color: var(--white); font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; position: relative; }
-        .sp-cta-banner p { color: rgba(255,255,255,0.6); font-size: 1rem; margin-bottom: 28px; max-width: 500px; position: relative; }
-        .sp-cta-banner .sp-btn-primary { position: relative; }
-        .sp-trust-row { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; position: relative; }
+        .sp-cta-banner-content { position: relative; }
+        .sp-cta-banner-actions { position: relative; }
+        .sp-cta-banner h2 { font-family: var(--font-display); color: var(--white); font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; }
+        .sp-cta-banner p { color: rgba(255,255,255,0.6); font-size: 1rem; margin-bottom: 0; max-width: 460px; }
+        .sp-cta-banner-actions .sp-btn-primary { margin-top: 28px; display: inline-flex; }
+        .sp-trust-row { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
         .sp-trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.5); font-family: var(--font-body); }
         .sp-trust-item .bi { color: var(--green); }
 
-        /* Footer */
-        .sp-footer { background: #060E1A; padding: 40px 0 20px; }
-        .sp-footer-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 24px;
+        @media (min-width: 1024px) {
+          .sp-cta-banner {
+            padding: 52px 56px;
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+          }
+          .sp-cta-banner-content { flex: 1; }
+          .sp-cta-banner-actions { flex-shrink: 0; text-align: right; }
+          .sp-cta-banner-actions .sp-btn-primary { margin-top: 0; }
+          .sp-cta-banner p { margin-bottom: 0; }
+          .sp-trust-row { justify-content: flex-end; }
         }
-        @media (min-width: 768px) { .sp-footer-grid { grid-template-columns: repeat(3, 1fr); } }
-        .sp-footer-logo { height: 32px; width: auto; display: block; margin-bottom: 10px; }
-        .sp-footer-desc { color: rgba(255,255,255,0.4); font-size: 0.82rem; line-height: 1.6; font-family: var(--font-body); }
-        .sp-footer p { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-bottom: 6px; font-family: var(--font-body); }
-        .sp-footer-icon { color: var(--blue-light); margin-right: 6px; }
-        .sp-footer-links-row a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
-        .sp-footer-links-row a:hover { color: rgba(255,255,255,0.7); }
-        .sp-footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; margin-top: 28px; text-align: center; }
+        @media (min-width: 1536px) {
+          .sp-cta-banner { max-width: 1100px; padding: 56px 64px; }
+        }
+
 
         /* WhatsApp float */
         .sp-wa-float {
