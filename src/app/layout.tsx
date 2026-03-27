@@ -1,17 +1,29 @@
 "use client";
-import { Manrope } from "next/font/google";
+import { Manrope, Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
-import WhatsAppButton from "./components/layout/whatsapp-button";
 
 
 const manrope = Manrope({
   subsets: ["latin"],
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-display-next",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body-next",
 });
 
 export default function RootLayout({
@@ -32,18 +44,18 @@ export default function RootLayout({
     });
   }, [pathname]);
 
-  const excludedRoutes = ["/signin", "/signup", "/forgot-password", "/documentation"];
+  const excludedRoutes = ["/", "/signin", "/signup", "/forgot-password", "/documentation"];
   const hideLayout = excludedRoutes.includes(pathname) || is404;
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={manrope.className}>
+      <body className={`${manrope.className} ${playfairDisplay.variable} ${dmSans.variable}`}>
         <SessionProvider>
           <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light" forcedTheme="light">
             {!hideLayout && <Header />}
             {children}
             {!hideLayout && <Footer />}
-            <WhatsAppButton />
+
           </ThemeProvider>
         </SessionProvider>
       </body>
