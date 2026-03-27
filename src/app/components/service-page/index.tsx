@@ -201,20 +201,20 @@ export default function ServicePage(props: ServicePageProps) {
               </div>
             )}
 
-            {/* FLOATING CARDS (Cascade for Vida, Cumplimiento, ARL) */}
+            {/* FLOATING CARDS (Renderizadas con el estilo de heroStats) */}
             {floatingCards && floatingCards.length === 3 && (
-              <div className="sp-hero-right sp-hero-floating">
-                {floatingCards.map((c, i) => (
-                  <div key={c.title} className={`sp-float-card sp-float-card-${i + 1}`}>
-                    <div className="sp-fc-icon" style={{ background: c.iconBg, color: c.iconColor }}>
-                      <i className={`bi ${c.icon}`} />
+              <div className="sp-hero-right d-none d-lg-block">
+                <div className="sp-mini-cards">
+                  {floatingCards.map((c, i) => (
+                    <div key={c.title} className={`sp-mini-card ${i === 2 ? 'sp-span-2' : ''}`}>
+                      <div className="sp-mc-icon" style={{ color: c.iconColor }}>
+                        <i className={`bi ${c.icon}`} />
+                      </div>
+                      <div className="sp-mc-label">{c.title}</div>
+                      <div className="sp-mc-text">{c.text}</div>
                     </div>
-                    <div className="sp-fc-content">
-                      <div className="sp-fc-title">{c.title}</div>
-                      <div className="sp-fc-text">{c.text}</div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -522,49 +522,24 @@ export default function ServicePage(props: ServicePageProps) {
         }
         .sp-mini-card {
           background: rgba(255,255,255,0.06);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 12px;
-          padding: 20px;
-          color: var(--white);
-          text-align: center;
-          transition: transform 0.3s;
-        }
-        .sp-mini-card:hover { transform: translateY(-3px); }
-        .sp-mc-icon { font-size: 1.8rem; margin-bottom: 8px; color: var(--blue-light); }
-        .sp-mc-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
-        .sp-mc-value { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-top: 2px; }
-
-        /* Floating cascade cards */
-        .sp-hero-floating { position: relative; min-height: 400px; display: none; }
-        @media (min-width: 1024px) { .sp-hero-floating { display: block; } }
-
-        .sp-float-card {
-          position: absolute;
-          background: rgba(255,255,255,0.06);
           backdrop-filter: blur(20px);
           border: 1px solid rgba(255,255,255,0.1);
           border-radius: 20px;
-          padding: 20px;
+          padding: 24px 20px;
           color: var(--white);
-          width: 320px;
+          text-align: center;
+          transition: transform 0.3s;
           display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          transition: transform 0.3s, box-shadow 0.3s;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
-        .sp-float-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-        .sp-fc-icon {
-          width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
-          justify-content: center; font-size: 1.4rem; flex-shrink: 0;
-        }
-        .sp-fc-title { font-weight: 700; font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 4px; }
-        .sp-fc-text { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; font-family: var(--font-body); }
-
-        .sp-float-card-1 { top: 0; right: 20px; z-index: 3; }
-        .sp-float-card-2 { top: 120px; right: 60px; z-index: 2; }
-        .sp-float-card-3 { top: 240px; right: -20px; z-index: 1; }
+        .sp-mini-card:hover { transform: translateY(-3px); }
+        .sp-mc-icon { font-size: 2rem; margin-bottom: 12px; color: var(--blue-light); }
+        .sp-mc-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+        .sp-mc-value { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-top: 4px; }
+        .sp-mc-text { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; margin-top: 8px; max-width: 250px; }
+        .sp-span-2 { grid-column: span 2; }
 
         /* ── SECTIONS ── */
         .sp-section { padding: var(--space-section, 80px) 0; }
